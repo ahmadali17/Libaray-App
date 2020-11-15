@@ -14,6 +14,8 @@ namespace LibarayApp
             Program p = new Program();
             p.Choices();
 
+            Console.WriteLine("Testing Git");
+
             Console.ReadKey();
         }
 
