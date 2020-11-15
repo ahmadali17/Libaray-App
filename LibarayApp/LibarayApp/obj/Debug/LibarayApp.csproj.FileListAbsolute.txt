@@ -1,0 +1,7 @@
+D:\ITI\LibarayApp\LibarayApp\bin\Debug\LibarayApp.exe.config
+D:\ITI\LibarayApp\LibarayApp\bin\Debug\LibarayApp.exe
+D:\ITI\LibarayApp\LibarayApp\bin\Debug\LibarayApp.pdb
+D:\ITI\LibarayApp\LibarayApp\obj\Debug\LibarayApp.csprojAssemblyReference.cache
+D:\ITI\LibarayApp\LibarayApp\obj\Debug\LibarayApp.csproj.CoreCompileInputs.cache
+D:\ITI\LibarayApp\LibarayApp\obj\Debug\LibarayApp.exe
+D:\ITI\LibarayApp\LibarayApp\obj\Debug\LibarayApp.pdb
