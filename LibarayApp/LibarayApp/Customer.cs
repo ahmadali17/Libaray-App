@@ -29,12 +29,12 @@ namespace LibarayApp
             Console.WriteLine("1: Show All Books.");
             Console.WriteLine("2: Buy a book.");
             Console.Write("\nYour Choice: ");
-
         }
 
         public override void Login()
         {
             base.Login();
+
             int choice;
 
             if (GetUserName() == "ahmed" && GetPassword() == "123")

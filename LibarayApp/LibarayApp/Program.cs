@@ -33,7 +33,8 @@ namespace LibarayApp
 
             if (choice == 1)
             {
-                User.Login();
+                User CustomerUser = new Customer();
+                CustomerUser.Login();
             }
             else if (choice == 2)
             {

@@ -51,7 +51,6 @@ namespace LibarayApp
 
         public virtual void Login()
         {
-            int choice;
             Console.Write("User Name: ");
             SetUserName(Console.ReadLine());
             Console.Clear();
