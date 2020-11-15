@@ -17,7 +17,7 @@ namespace LibarayApp
         //login
         //register
         //show
-        
+        //logout
 
         public void SetUserID(int id)
         {
@@ -38,11 +38,26 @@ namespace LibarayApp
         {
             return userName;
         }
-        
 
-        public void Login()
+        public void SetPassword(string pass)
         {
+            password = pass;
+        }
 
+        public string GetPassword()
+        {
+            return password;
+        }
+
+        public virtual void Login()
+        {
+            int choice;
+            Console.Write("User Name: ");
+            SetUserName(Console.ReadLine());
+            Console.Clear();
+
+            Console.WriteLine("Password: ");
+            SetPassword(Console.ReadLine()); 
         }
 
         public void Register()
@@ -54,5 +69,7 @@ namespace LibarayApp
         {
 
         }
+
+       
     }
 }

@@ -14,8 +14,6 @@ namespace LibarayApp
             Program p = new Program();
             p.Choices();
 
-            Console.WriteLine("Testing Git");
-
             Console.ReadKey();
         }
 
@@ -24,25 +22,18 @@ namespace LibarayApp
             int choice;
 
             Console.WriteLine("Select: ");
-            Console.WriteLine("1: Login.");
-            Console.WriteLine("2: Register New User.");
+            Console.WriteLine("1: Login as a Customer.");
+            Console.WriteLine("2: Login as an Admin.");
 
             Console.Write("\nYour Choice: ");
             choice = int.Parse(Console.ReadLine());
 
+            User u = new User();
 
 
             if (choice == 1)
             {
-                Console.Clear();
-                Console.WriteLine("\t\tWelcome \'UserName\'\n\n");
-
-                Console.WriteLine("Select: ");
-                Console.WriteLine("1: Browse All Books.");
-                Console.WriteLine("2: Buy.");
-
-                Console.Write("\nYour Choice: ");
-                choice = int.Parse(Console.ReadLine());
+                User.Login();
             }
             else if (choice == 2)
             {
@@ -70,3 +61,12 @@ namespace LibarayApp
     }
 }
 
+//Console.Clear();
+//Console.WriteLine("\t\tWelcome \'UserName\'\n\n");
+
+//Console.WriteLine("Select: ");
+//Console.WriteLine("1: Browse All Books.");
+//Console.WriteLine("2: Buy.");
+
+//Console.Write("\nYour Choice: ");
+//choice = int.Parse(Console.ReadLine());
