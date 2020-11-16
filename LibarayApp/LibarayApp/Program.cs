@@ -10,11 +10,27 @@ namespace LibarayApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\t\t Welcome To Our Libray Management System\n\n");
+            /*Console.WriteLine("\t\t Welcome To Our Libray Management System\n\n");
             Program p = new Program();
             p.Choices();
 
-            Console.ReadKey();
+            Console.ReadKey();*/
+            ////////// Show Book For Customer & Admin //////////////////
+            Staff s = new Staff();
+            s.show();
+            Console.WriteLine("***********************************");
+           /* Customer c = new Customer();
+            c.show();*/
+
+            ///////////////// Add Book //////////////////
+          /*  Staff s = new Staff();
+            s.add_book();*/
+
+            //////////////// delete book////////////
+
+           /*Staff s = new Staff();
+            s.delete();*/
+
         }
 
         public void Choices()

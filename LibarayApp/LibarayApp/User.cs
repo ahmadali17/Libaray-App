@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 namespace LibarayApp
 {
     public class User
@@ -68,7 +69,19 @@ namespace LibarayApp
         {
 
         }
+        public  void show()
+        {
+            StreamReader sr = new StreamReader("BookData.txt");
+            string line;
 
+            while ((line = sr.ReadLine()) != null)
+            {
+                string Line_Without_delimiter = line.Replace(";", "           ");
+                Console.WriteLine(Line_Without_delimiter);
+
+            }
+            sr.Close();
+        }
        
     }
 }

@@ -11,10 +11,10 @@ namespace LibarayApp
         {
         }
 
-        public static void Show()
+        /*public static void Show()
         {
 
-        }
+        }*/
 
         public static void Buy()
         {
@@ -43,7 +43,8 @@ namespace LibarayApp
 
                 choice = int.Parse(Console.ReadLine());
                 if (choice == 1)
-                    Customer.Show();
+                { }
+                   // Customer.Show();
                 else if (choice == 2)
                     Customer.Buy();
                 else
