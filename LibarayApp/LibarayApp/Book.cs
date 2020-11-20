@@ -4,9 +4,9 @@ namespace LibarayApp
 {
     public class Book
     {
+        private int ISBN;
         private string title;
         private string author;
-        private int ISBN;
         private int publication;
         private double price;
 

@@ -24,7 +24,6 @@ namespace LibarayApp
             Console.WriteLine("Enter Book's Price");
             b.set_price( double.Parse(Console.ReadLine()));
             
-            ////////////////////////////
             if (new FileInfo("BookData.txt").Length == 0)
             {
                 isbn = 1;
@@ -35,7 +34,6 @@ namespace LibarayApp
 
             else
             {
-               
                 string m = "";
 
                 StreamReader r = new StreamReader("BookData.txt");
@@ -56,8 +54,6 @@ namespace LibarayApp
            
  
         }
-
-        /////////////////////////////////////////////////////
 
         public void delete()
         {
@@ -99,14 +95,13 @@ namespace LibarayApp
             {
                 Console.WriteLine("No exist this ID");
             }
-            //}
            
         }
 
-        //add new book
-        //delete book
-        //show book
-
+        public override void Show()
+        {
+            base.Show();
+        }
 
     }
 }

@@ -10,26 +10,27 @@ namespace LibarayApp
     {
         static void Main(string[] args)
         {
-            /*Console.WriteLine("\t\t Welcome To Our Libray Management System\n\n");
-            Program p = new Program();
-            p.Choices();
+            Console.WriteLine("\t\t Welcome To Our Libray Management System\n\n");
+            new Program().Choices();
 
-            Console.ReadKey();*/
             ////////// Show Book For Customer & Admin //////////////////
-            Staff s = new Staff();
-            s.show();
-            Console.WriteLine("***********************************");
-           /* Customer c = new Customer();
-            c.show();*/
+            //Staff s = new Staff();
+            //s.show();
+            //Console.WriteLine("***********************************");
+
+            /* Customer c = new Customer();
+             c.show();*/
 
             ///////////////// Add Book //////////////////
-          /*  Staff s = new Staff();
-            s.add_book();*/
+            /*  Staff s = new Staff();
+              s.add_book();*/
 
             //////////////// delete book////////////
 
-           /*Staff s = new Staff();
-            s.delete();*/
+            /*Staff s = new Staff();
+             s.delete();*/
+
+            //new User().Register();
 
         }
 
@@ -40,33 +41,30 @@ namespace LibarayApp
             Console.WriteLine("Select: ");
             Console.WriteLine("1: Login as a Customer.");
             Console.WriteLine("2: Login as an Admin.");
+            Console.WriteLine("3: Register a new User.");
 
             Console.Write("\nYour Choice: ");
             choice = int.Parse(Console.ReadLine());
-
-            User u = new User();
 
 
             if (choice == 1)
             {
                 User CustomerUser = new Customer();
                 CustomerUser.Login();
+
             }
             else if (choice == 2)
             {
                 Console.Clear();
-                Console.WriteLine("\t\tEnter registeration details\n");
 
-                Console.Write("Name: ");
-                string name = Console.ReadLine();
 
-                Console.Clear();
-                Console.WriteLine("\t\tEnter registeration details\n");
-
-                Console.Write("Mobile: ");
-                string asd = Console.ReadLine();
+                //Admin Options HERE
 
                 Console.Clear();
+            }
+            else if (choice == 3)
+            {
+                new User().Register();
             }
             else
             {
@@ -77,13 +75,3 @@ namespace LibarayApp
         }
     }
 }
-
-//Console.Clear();
-//Console.WriteLine("\t\tWelcome \'UserName\'\n\n");
-
-//Console.WriteLine("Select: ");
-//Console.WriteLine("1: Browse All Books.");
-//Console.WriteLine("2: Buy.");
-
-//Console.Write("\nYour Choice: ");
-//choice = int.Parse(Console.ReadLine());

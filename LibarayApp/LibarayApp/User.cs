@@ -13,13 +13,6 @@ namespace LibarayApp
         {
         }
 
-
-        //check account
-        //login
-        //register
-        //show
-        //logout
-
         public void SetUserID(int id)
         {
             userID = id;
@@ -50,26 +43,91 @@ namespace LibarayApp
             return password;
         }
 
+        public void SetUserType(UserType ut)
+        {
+            userType = ut;
+        }
+        public UserType GetUserType()
+        {
+            return userType;
+        }
+
+
         public virtual void Login()
         {
+            Console.Clear();
             Console.Write("User Name: ");
             SetUserName(Console.ReadLine());
             Console.Clear();
 
             Console.WriteLine("Password: ");
-            SetPassword(Console.ReadLine()); 
+            SetPassword(Console.ReadLine());
         }
 
-        public void Register()
+        public virtual void Register()
         {
+            User u = new User();
 
+            Console.Write("Enter your user name: ");
+            string user = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Enter password: ");
+            string pass = Console.ReadLine();
+
+            Console.WriteLine("Repeat password: ");
+            string repeatedPassword = Console.ReadLine();
+            if (repeatedPassword == pass)
+            {
+                u.SetUserName(user);
+                u.SetPassword(pass);
+
+                u.SetUserType(UserType.customer);
+
+                if (new FileInfo("UserData.txt").Length == 0)
+                {
+                    userID = 1;
+                    u.SetUserID(userID);
+
+                    u.AddUserToFile();
+                }
+                else
+                {
+                    string m = "";
+
+                    StreamReader r = new StreamReader("UserData.txt");
+                    while (r.EndOfStream == false)
+                    {
+                        m = r.ReadLine();
+                    }
+                    r.Close();
+                    char[] spearator = { ';' };
+
+                    string[] strlist = m.Split(spearator);
+                    int id = int.Parse(strlist[0]);
+                    userID = id + 1;
+                    u.SetUserID(userID);
+
+                    u.AddUserToFile();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Password not matched!");
+                new User().Register();
+            }
         }
 
-        public void LogOut()
+
+
+        public virtual void LogOut()
         {
-
+            Console.Clear();
+            new Program().Choices();
         }
-        public  void show()
+
+
+        public virtual void Show()
         {
             StreamReader sr = new StreamReader("BookData.txt");
             string line;
@@ -82,6 +140,18 @@ namespace LibarayApp
             }
             sr.Close();
         }
-       
+
+
+        public void AddUserToFile()
+        {
+            StreamWriter sw = File.AppendText("UserData.txt");
+            string line = GetUserID() + ";" + GetUserName() + ";" + GetPassword() + ";" + GetUserType();
+
+            sw.Write(line + "\n");
+            Console.WriteLine("New User Added");
+            sw.Close();
+        }
+
     }
 }
+

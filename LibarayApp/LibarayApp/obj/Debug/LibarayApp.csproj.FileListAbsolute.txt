@@ -12,3 +12,13 @@ D:/ITI/LibarayApp/LibarayApp/obj/Debug/LibarayApp.pdb
 /Users/MoHaMeD/Projects/GitHub/LibarayApp/LibarayApp/obj/Debug/LibarayApp.csproj.CoreCompileInputs.cache
 /Users/MoHaMeD/Projects/GitHub/LibarayApp/LibarayApp/obj/Debug/LibarayApp.exe
 /Users/MoHaMeD/Projects/GitHub/LibarayApp/LibarayApp/obj/Debug/LibarayApp.pdb
+F:\Libaray-App-main\LibarayApp\LibarayApp\bin\Debug\LibarayApp.exe.config
+F:\Libaray-App-main\LibarayApp\LibarayApp\obj\Debug\LibarayApp.exe
+F:\Libaray-App-main\LibarayApp\LibarayApp\obj\Debug\LibarayApp.pdb
+F:\Libaray-App-main\LibarayApp\LibarayApp\obj\Debug\LibarayApp.csprojResolveAssemblyReference.cache
+C:\Users\aa\Documents\Visual Studio 2013\Projects\Libaray-App-main\LibarayApp\LibarayApp\bin\Debug\LibarayApp.exe.config
+C:\Users\aa\Documents\Visual Studio 2013\Projects\Libaray-App-main\LibarayApp\LibarayApp\obj\Debug\LibarayApp.exe
+C:\Users\aa\Documents\Visual Studio 2013\Projects\Libaray-App-main\LibarayApp\LibarayApp\obj\Debug\LibarayApp.pdb
+C:\Users\aa\Documents\Visual Studio 2013\Projects\Libaray-App-main\LibarayApp\LibarayApp\bin\Debug\LibarayApp.exe
+C:\Users\aa\Documents\Visual Studio 2013\Projects\Libaray-App-main\LibarayApp\LibarayApp\bin\Debug\LibarayApp.pdb
+C:\Users\aa\Documents\Visual Studio 2013\Projects\Libaray-App-main\LibarayApp\LibarayApp\obj\Debug\LibarayApp.csprojResolveAssemblyReference.cache
