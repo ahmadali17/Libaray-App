@@ -56,51 +56,75 @@ namespace LibarayApp
         public virtual void Login()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("User Name: ");
             SetUserName(Console.ReadLine());
             Console.Clear();
 
             Console.WriteLine("Password: ");
             SetPassword(Console.ReadLine());
+
+            Console.ResetColor();
         }
 
-        public override void Register()
+        public virtual void Register()
         {
-            base.Register();
+            User u = new User();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
 
-            List<string> list = new List<string>();
-            foreach (var line in File.ReadAllLines("Login.txt"))
+            Console.Write("Enter your user name: ");
+            string user = Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("Enter password: ");
+            string pass = Console.ReadLine();
+
+            Console.WriteLine("Repeat password: ");
+            string repeatedPassword = Console.ReadLine();
+            if (repeatedPassword == pass)
             {
-                char[] spearator = { ';' };
+                u.SetUserName(user);
+                u.SetPassword(pass);
 
-                string[] strlist = line.Split(spearator);
+                u.SetUserType(UserType.customer);
 
-                list.Add(strlist[0]);
-            }
-            string name = GetUserName();
-            if (list.Contains(name))
-            {
-                Console.WriteLine("this username already exist");
+                if (new FileInfo("UserData.txt").Length == 0)
+                {
+                    userID = 1;
+                    u.SetUserID(userID);
+
+                    u.AddUserToFile();
+                }
+                else
+                {
+                    string m = "";
+
+                    StreamReader r = new StreamReader("UserData.txt");
+                    while (r.EndOfStream == false)
+                    {
+                        m = r.ReadLine();
+                    }
+                    r.Close();
+                    char[] spearator = { ';' };
+
+                    string[] strlist = m.Split(spearator);
+                    int id = int.Parse(strlist[0]);
+                    userID = id + 1;
+                    u.SetUserID(userID);
+
+                    u.AddUserToFile();
+                }
             }
             else
             {
-                StreamWriter sw = File.AppendText("Login.txt");
-                string line = GetUserName() + ";" + GetPassword();
-                sw.Write(line + "\n");
-                Console.WriteLine("Added successfully");
-                sw.Close();
+                Console.ForegroundColor = ConsoleColor.Red;
 
-                CustomerOptions();
-                int choice;
-                choice = int.Parse(Console.ReadLine());
-                if (choice == 1)
-                    show();
-
-                else if (choice == 2)
-                    Buy();
-                else
-                    CustomerOptions();
+                Console.WriteLine("Password not matched!");
+                Console.ResetColor();
+                new User().Register();
             }
+
+            Console.ResetColor();
         }
 
 
@@ -114,6 +138,8 @@ namespace LibarayApp
 
         public virtual void Show()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+
             StreamReader sr = new StreamReader("BookData.txt");
             string line;
 
@@ -124,6 +150,8 @@ namespace LibarayApp
 
             }
             sr.Close();
+
+            Console.ResetColor();
         }
 
 

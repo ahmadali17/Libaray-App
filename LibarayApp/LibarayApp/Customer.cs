@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace LibarayApp
 {
@@ -16,103 +17,31 @@ namespace LibarayApp
 
         public override void Show()
         {
-            Console.WriteLine("All Books: \n\n");
-            base.Show();
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
-            //Show();            delete();            Buy_Data();            Console.WriteLine("buy is Successfully");
+            Console.WriteLine("All Books: \n\n");
+            Console.ResetColor();
+            base.Show();
         }
 
         public void Buy()
         {
-            List<int> list = new List<int>();
-            foreach (var line in File.ReadAllLines("BookData.txt"))
-            {
-                char[] spearator = { ';' };
 
-                string[] strlist = line.Split(spearator);
-
-                list.Add(int.Parse(strlist[0]));
-
-            }
-
-            foreach (var r in list)
-            {
-                Console.WriteLine(r);
-            }
-            Console.WriteLine("***************************");
-            Console.Write("Enter book id you want to buy: ");
-            int id = int.Parse(Console.ReadLine());
-            if (list.Contains(id))
-            {
-                Console.Clear();
-                var File_data = File.ReadAllLines("BookData.txt");
-                List<string> new_lines = new List<string>();
-
-                foreach (var s in File_data)               
-                    new_lines.Add(s);
-                
-                new_lines.RemoveAt(list.IndexOf(id));
-
-                File.WriteAllLines("BookData.txt", new_lines.ToArray());
-                Console.WriteLine("Congrats!\n\nYou have Successfully bought this book :D\n\n\n");
-                Console.WriteLine("Check our new collection to buy again: \n\n");
-
-                Console.Clear();
-                Show();
-
-            }
-            else
-            {
-                Console.WriteLine("Book ID NOT exist \n Please Try Again");
-                Console.Clear();
-                CustomerOptions();
-            }
+            Show();
+            delete();
+            Buy_Data();
+            Console.WriteLine("buy is Successfully");
         }
 
-        public static void CustomerOptions()
+        public void Buy_Data()
         {
-            Console.Clear();
-            Console.WriteLine("\t Welcome Ahmed \t");
-            Console.WriteLine("Select: ");
-            Console.WriteLine("1: Show All Books.");
-            Console.WriteLine("2: Buy a book.");
-            Console.Write("\nYour Choice: ");
+            StreamWriter sw = File.AppendText("BuyData.txt");
+            string line = DateTime.Now.ToString("HH:mm:ss tt") + "\n" + "" + "\n" + "=====================================================================";
+
+            sw.Write(line + "\n");
+            Console.WriteLine("buy info Added");
+            sw.Close();
         }
-
-        public override void Login()
-        {
-            base.Login();
-            List<string> list = new List<string>();
-            foreach (var line in File.ReadAllLines("Login.txt"))
-            {
-                char[] spearator = { ';' };
-
-                string[] strlist = line.Split(spearator);
-
-                list.Add(strlist[0] + " " + strlist[1]);
-            }
-            string name_and_pass = GetUserName() + " " + GetPassword();
-            if (list.Contains(name_and_pass))
-            {
-                Console.WriteLine("email exist");
-                CustomerOptions();
-                int choice;
-                choice = int.Parse(Console.ReadLine());
-                if (choice == 1)
-                    show();
-
-                else if (choice == 2)
-                    Buy();
-                else
-                    CustomerOptions();
-            }
-            else
-            {
-                Console.WriteLine("not exist");
-            }
-        }
-
-        public void Buy_Data()        {            StreamWriter sw = File.AppendText("BuyData.txt");            string line = DateTime.Now.ToString("HH:mm:ss tt") + "\n" + "" + "\n" + "=====================================================================";            sw.Write(line + "\n");            Console.WriteLine("buy info Added");            sw.Close();        }
 
         public void delete()
         {
@@ -145,8 +74,6 @@ namespace LibarayApp
                 new_lines.RemoveAt(list.IndexOf(b.get_isbn()));
                 File.WriteAllLines("BookData.txt", new_lines.ToArray());
 
-                //File.WriteAllLines("BuyData.txt", buy_list.ToArray());
-                // string combindedString = string.Join(";", buy_list);
 
                 StreamWriter sw = File.AppendText("BuyData.txt");
                 sw.Write(combindedString + "\n");
@@ -160,44 +87,80 @@ namespace LibarayApp
                 Console.WriteLine("No exist this ID");
             }
         }
-
-        public override void Register()
+        public void CustomerOptions()
         {
-            //base.Register();
+            Console.Clear();
+            Console.WriteLine("\t Welcome, " + GetUserName());
+            Console.WriteLine("Select: ");
+            Console.WriteLine("1: Show All Books.");
+            Console.WriteLine("2: Buy a book.");
+            Console.WriteLine("3: Logout.");
+            Console.Write("\nYour Choice: ");
 
+            string customerChoice;
+
+
+            customerChoice = Console.ReadLine();
+            if (customerChoice == "1")
+            {
+                Show();
+                Console.WriteLine();
+                Return();
+
+            }
+            else if (customerChoice == "2")
+            {
+                Console.Clear();
+                Buy();
+                Return();
+            }
+            else if (customerChoice == "3")
+            {
+                LogOut();
+            }
+            else
+            {
+                Console.WriteLine("Please enter valid number");
+                Thread.Sleep(2000);
+                CustomerOptions();
+            }
+                
+        }
+
+        public override void Login()
+        {
+            base.Login();
             List<string> list = new List<string>();
-            foreach (var line in File.ReadAllLines("Login.txt"))
+            foreach (var line in File.ReadAllLines("UserData.txt"))
             {
                 char[] spearator = { ';' };
 
                 string[] strlist = line.Split(spearator);
 
-                list.Add(strlist[0]);
+                list.Add(strlist[1] + " " + strlist[2]);
             }
-            string name = GetUserName();
-            if (list.Contains(name))
+            string name_and_pass = GetUserName() + " " + GetPassword();
+            if (list.Contains(name_and_pass))
             {
-                Console.WriteLine("this username already exist");
+                CustomerOptions();
             }
             else
             {
-                StreamWriter sw = File.AppendText("Login.txt");
-                string line = GetUserName() + ";" + GetPassword();
-                sw.Write(line + "\n");
-                Console.WriteLine("Added successfully");
-                sw.Close();
-
-                CustomerOptions();
-                int choice;
-                choice = int.Parse(Console.ReadLine());
-                if (choice == 1)
-                    Show();
-
-                else if (choice == 2)
-                    Buy();
-                else
-                    CustomerOptions();
+                Console.WriteLine("not exist");
             }
+        }
+
+        public void Return()
+        {
+            Console.WriteLine("Return to main options? (Y/N)");
+            string choice2 = Console.ReadLine();
+
+            if (choice2 == "y" || choice2 == "Y")
+            {
+                CustomerOptions();
+            }
+            else
+                LogOut();
         }
     }
 }

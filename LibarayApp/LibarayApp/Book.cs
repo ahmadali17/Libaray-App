@@ -71,14 +71,12 @@ namespace LibarayApp
 
         public void book_info()
         {
-            using (StreamWriter sw = File.AppendText("BookData.txt"))
-            {
-                string line = get_isbn() + ";" + get_title() + ";" + get_auther() + ";" + get_publication() + ";" + get_price();
+            StreamWriter sw = File.AppendText("BookData.txt");
+            string line = get_isbn() + ";" + get_title() + ";" + get_auther() + ";" + get_publication() + ";" + get_price();
 
-                sw.Write(line + "\n");
-                Console.WriteLine("book Added");
-                sw.Close();
-            }
+            sw.Write(line + "\n");
+            Console.WriteLine("book Added");
+            sw.Close();
         }
 
     }

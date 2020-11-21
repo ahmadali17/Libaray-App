@@ -1,5 +1,10 @@
-1;book1;auther1;2003;12.5
-2;book2;auther2;2005;20.3
-4;book4;auther4;2008;40.5
+1;book1;auther6;2015;31.125
+2;book2;auther6;2015;31.125
+3;book3;auther6;2015;31.125
+4;book4;auther6;2015;31.125
+5;book5;auther6;2015;31.125
 6;book6;auther6;2015;31.125
-7;book7;auther7;2030;18.15
+7;book7;auther6;2015;31.125
+8;book8;auther6;2015;31.125
+9;book9;auther6;2015;31.125
+10;book10;auther6;2015;31.125
