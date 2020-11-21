@@ -103,5 +103,25 @@ namespace LibarayApp
             base.Show();
         }
 
+        public void show_history()
+        {
+            if (new FileInfo("BuyData.txt").Length == 0)
+            {
+                Console.WriteLine("No history yet");
+            }
+            else
+            {
+                StreamReader sr = new StreamReader("BuyData.txt");
+                string line;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string Line_Without_delimiter = line.Replace(";", "           ");
+                    Console.WriteLine(Line_Without_delimiter);
+
+                }
+                sr.Close();
+            }
+        }
     }
 }

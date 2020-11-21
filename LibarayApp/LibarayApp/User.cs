@@ -64,57 +64,42 @@ namespace LibarayApp
             SetPassword(Console.ReadLine());
         }
 
-        public virtual void Register()
+        public override void Register()
         {
-            User u = new User();
+            base.Register();
 
-            Console.Write("Enter your user name: ");
-            string user = Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("Enter password: ");
-            string pass = Console.ReadLine();
-
-            Console.WriteLine("Repeat password: ");
-            string repeatedPassword = Console.ReadLine();
-            if (repeatedPassword == pass)
+            List<string> list = new List<string>();
+            foreach (var line in File.ReadAllLines("Login.txt"))
             {
-                u.SetUserName(user);
-                u.SetPassword(pass);
+                char[] spearator = { ';' };
 
-                u.SetUserType(UserType.customer);
+                string[] strlist = line.Split(spearator);
 
-                if (new FileInfo("UserData.txt").Length == 0)
-                {
-                    userID = 1;
-                    u.SetUserID(userID);
-
-                    u.AddUserToFile();
-                }
-                else
-                {
-                    string m = "";
-
-                    StreamReader r = new StreamReader("UserData.txt");
-                    while (r.EndOfStream == false)
-                    {
-                        m = r.ReadLine();
-                    }
-                    r.Close();
-                    char[] spearator = { ';' };
-
-                    string[] strlist = m.Split(spearator);
-                    int id = int.Parse(strlist[0]);
-                    userID = id + 1;
-                    u.SetUserID(userID);
-
-                    u.AddUserToFile();
-                }
+                list.Add(strlist[0]);
+            }
+            string name = GetUserName();
+            if (list.Contains(name))
+            {
+                Console.WriteLine("this username already exist");
             }
             else
             {
-                Console.WriteLine("Password not matched!");
-                new User().Register();
+                StreamWriter sw = File.AppendText("Login.txt");
+                string line = GetUserName() + ";" + GetPassword();
+                sw.Write(line + "\n");
+                Console.WriteLine("Added successfully");
+                sw.Close();
+
+                CustomerOptions();
+                int choice;
+                choice = int.Parse(Console.ReadLine());
+                if (choice == 1)
+                    show();
+
+                else if (choice == 2)
+                    Buy();
+                else
+                    CustomerOptions();
             }
         }
 
